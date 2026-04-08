@@ -126,7 +126,7 @@ def do_scan():
     choice = input("  > ").strip()
     
     if choice == "1":
-        save_path = os.path.expanduser("~/spacehog-scan.txt")
+        save_path = os.path.join(os.getcwd(), "spacehog-scan.txt")
         try:
             with open(save_path, 'w') as f:
                 f.write(f"SpaceHog Scan - {path}\n")
