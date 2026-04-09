@@ -10,6 +10,16 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import Dict, List, Callable, Optional
 
+
+def format_size(size_bytes: int) -> str:
+    """Convert bytes to human readable string"""
+    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+        if size_bytes < 1024.0:
+            return f"{size_bytes:.1f} {unit}"
+        size_bytes /= 1024.0
+    return f"{size_bytes:.1f} PB"
+
+
 @dataclass
 class ScanResult:
     """Holds the results of a disk scan"""
@@ -85,7 +95,9 @@ class DiskScanner:
                         size = os.lstat(filepath).st_size
                         root_size += size
                         file_count += 1
-                    except (OSError, PermissionError):
+                    except (OSError, PermissionError) as e:
+                        # Track ALL permission errors
+                        self._results.errors.append(f"{type(e).__name__}: {filepath}")
                         continue
                 
                 folder_totals[root] = root_size
@@ -101,6 +113,12 @@ class DiskScanner:
                 
         except Exception as e:
             self._results.errors.append(str(e))
+        
+        # Calculate tree size for each folder
+        for folder in reversed(folder_totals):
+            parent_folder = os.path.dirname(folder)
+            if parent_folder in folder_totals:
+                folder_totals[parent_folder] += folder_totals[folder]
         
         self._results.folder_sizes = dict(folder_totals)
         self._results.file_count = file_count
