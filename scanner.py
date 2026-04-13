@@ -122,6 +122,7 @@ class DiskScanner:
         
         self._results.folder_sizes = dict(folder_totals)
         self._results.file_count = file_count
+        self._results.total_size = folder_totals.get(path, self._results.total_size)
         self._results.scan_time = time.time() - start_time
         
         return self._results
