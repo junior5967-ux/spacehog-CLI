@@ -75,12 +75,36 @@ class DiskScanner:
         folders_checked = 0
         
         try:
+            # On Linux when scanning root, get the device ID of the root path
+            # to detect when we cross into mounted volumes
+            root_device = None
+            scan_root_device = None
+            if platform.system() == 'Linux' and path == '/':
+                try:
+                    scan_root_device = os.stat(path).st_dev
+                except OSError:
+                    pass
+            
             for root, dirs, files in os.walk(path, topdown=True):
                 if self._cancel:
                     break
                     
-                # Skip certain system folders to speed things up
-                dirs[:] = [d for d in dirs if d not in ['$Recycle.Bin', 'System Volume Information', '.Trash-1000']]
+                # On Linux root scan, filter out directories on different mount points
+                if platform.system() == 'Linux' and path == '/' and scan_root_device is not None:
+                    dirs[:] = [d for d in dirs if d not in ['$Recycle.Bin', 'System Volume Information', '.Trash-1000']]
+                    original_dirs = dirs[:]
+                    dirs[:] = []
+                    for d in original_dirs:
+                        dir_path = os.path.join(root, d)
+                        try:
+                            # Include only directories on the same filesystem (same device)
+                            if os.stat(dir_path).st_dev == scan_root_device:
+                                dirs.append(d)
+                        except OSError:
+                            pass  # Skip directories we can't stat
+                else:
+                    # Skip certain system folders to speed things up
+                    dirs[:] = [d for d in dirs if d not in ['$Recycle.Bin', 'System Volume Information', '.Trash-1000']]
                 
                 folders_checked += 1
                 root_size = 0
