@@ -4,7 +4,7 @@ SpaceHog - Disk Space Analyzer TUI
 Full curses-based terminal user interface
 Run with: python spacehog.py
 """
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 import os
 import sys
