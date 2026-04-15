@@ -15,7 +15,7 @@ curl -fsSL https://spacehog.nodehome.org/install.sh | sudo bash
 
 ## Usage
 
-After installing, run `spacehog` for the full-screen TUI scanner or `spacehog-tui` for the alternative TUI interface.
+After installing, run `spacehog` to launch the full-screen TUI scanner.
 
 ## Uninstall
 
