@@ -1,47 +1,29 @@
 # SpaceHog CLI
 
-A full-featured disk space analyzer with a gorgeous curses-based TUI. Navigate with arrow keys, see real-time scanning progress, and clean up temp files safely.
+A gorgeous disk space analyzer with a TUI interface.
 
-## Installation
+## Install
 
-1. Download the latest release from https://github.com/junior5967-ux/spacehog-CLI/releases
-2. Extract the zip and run:
-```bash
-pip install send2trash
-python spacehog.py
 ```
-
-## Features
-
-- 🖥️ **Full TUI Interface** - Arrow key navigation, dark theme, colored bars
-- 🔍 **Fast Scanner** - Scans drives and ranks folders by size
-- 🧹 **Safe Cleanup** - Find and delete temp/cache files safely
-- 💽 **Drive Info** - See all mounted drives and usage at a glance
-- 📋 **History** - View past cleanup actions with stats
-- 📊 **Colored Bars** - Visual representation of folder sizes
-- ⏳ **Animated Scanning** - Real-time progress with spinner
-- ❌ **Errors** - View skipped folders due to permissions
-- ❓ **Help** - In-app help screen
-
-## Controls
-
-- **↑/↓** - Navigate menu
-- **Enter** - Select option
-- **A** - Select all (in cleanup)
-- **D** - Delete selected (in cleanup)
+curl -fsSL https://spacehog.nodehome.org/install.sh | sudo bash
+```
 
 ## Requirements
 
-- Python 3
-- `send2trash` (`pip install send2trash`)
-- `windows-curses` on Windows (`pip install windows-curses`)
+- Ubuntu, Debian, Pop!_OS, or Mint
+- `curl`, `gpg`, `apt` (usually pre-installed)
 
-## Notes
+## Usage
 
-- Files are moved to Trash, not permanently deleted - you can restore them
-- Logs saved to `~/.spacehog/`
-- Requires terminal support for best experience
-- **Linux:** Root (`/`) scans correctly exclude mounted volumes — size totals reflect only the local filesystem
+After installing, run `spacehog` for the full-screen TUI scanner or `spacehog-tui` for the alternative TUI interface.
+
+## Uninstall
+
+```
+sudo apt remove spacehog
+sudo rm /etc/apt/sources.list.d/spacehog.list
+sudo rm /etc/apt/trusted.gpg.d/spacehog.gpg
+```
 
 ## License
 
