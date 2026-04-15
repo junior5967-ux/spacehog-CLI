@@ -1,5 +1,7 @@
 # SpaceHog CLI
 
+[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)]
+
 A gorgeous disk space analyzer with a TUI interface.
 
 ## Install
