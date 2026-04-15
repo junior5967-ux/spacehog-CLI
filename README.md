@@ -41,6 +41,7 @@ python spacehog.py
 - Files are moved to Trash, not permanently deleted - you can restore them
 - Logs saved to `~/.spacehog/`
 - Requires terminal support for best experience
+- **Linux:** Root (`/`) scans correctly exclude mounted volumes — size totals reflect only the local filesystem
 
 ## License
 
