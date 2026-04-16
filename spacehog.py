@@ -231,7 +231,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_main_menu(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
 
@@ -303,7 +303,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_scan_config(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("SCAN FOR DISK USAGE")
@@ -337,7 +337,7 @@ class SpaceHogTUI:
         return True
 
     def _prompt_scan_path(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.draw_header()
         self.draw_section_title("CHANGE SCAN PATH")
         self.safe_addstr(5, 4, f"Current: {self.scan_path}", self.cp(CP_DIM))
@@ -354,7 +354,7 @@ class SpaceHogTUI:
             self.message_color = CP_ERROR
 
     def _prompt_scan_top(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.draw_header()
         self.draw_section_title("NUMBER OF RESULTS")
         self.safe_addstr(5, 4, f"Current: {self.scan_top}  (range 5-50)", self.cp(CP_DIM))
@@ -396,7 +396,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_scanning(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("SCANNING...")
@@ -429,7 +429,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_scan_results(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("SCAN RESULTS")
@@ -520,7 +520,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_cleanup_config(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("FIND & CLEAN JUNK FILES")
@@ -572,7 +572,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_cleanup_scanning(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("SCANNING FOR JUNK FILES...")
@@ -590,7 +590,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_cleanup_view(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("CLEANUP TARGETS")
@@ -697,7 +697,7 @@ class SpaceHogTUI:
         dy = (self.height - dh) // 2
         dx = (self.width  - dw) // 2
 
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.draw_header()
         self.draw_border_box(dy, dx, dh, dw, "CONFIRM DELETION")
         self.safe_addstr(dy + 2, dx + 3, f"About to delete {len(targets)} item(s):", self.cp(CP_WARN) | curses.A_BOLD)
@@ -766,7 +766,7 @@ class SpaceHogTUI:
                 pass
 
     def draw_drives(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("DISK USAGE OVERVIEW")
@@ -819,7 +819,7 @@ class SpaceHogTUI:
             self.history_items = []
 
     def draw_history(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("CLEANUP HISTORY")
@@ -862,7 +862,7 @@ class SpaceHogTUI:
             self.error_items = []
 
     def draw_errors(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("RECENT ERRORS")
@@ -899,7 +899,7 @@ class SpaceHogTUI:
     # ════════════════════════════════════════════════════════════════════════
 
     def draw_help(self):
-        self.stdscr.clear()
+        self.stdscr.erase()
         self.height, self.width = self.stdscr.getmaxyx()
         self.draw_header()
         self.draw_section_title("HELP")
