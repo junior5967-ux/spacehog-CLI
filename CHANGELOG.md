@@ -2,7 +2,7 @@
 
 All notable changes to SpaceHog CLI will be documented here.
 
-## [0.1.1] — 2026-04-14
+## [0.1.1] — 2026-04-15
 
 ### Fixed
 - Mount point exclusion when scanning root on Linux (st_dev comparison)
