@@ -6,6 +6,7 @@ All notable changes to SpaceHog CLI will be documented here.
 
 ### Fixed
 - Mount point exclusion when scanning root on Linux (st_dev comparison)
+- Replace clear() with erase() for better screen updates in TUI
 
 ### Changed
 - Version bumped to 0.1.1
